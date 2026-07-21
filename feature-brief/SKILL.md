@@ -12,8 +12,10 @@ disable-model-invocation: true
 
 This skill scopes one specific functionality from the build plan 
 into a focused brief. It does not make implementation decisions 
-or write code. Its sole output is a markdown document saved to 
-docs/briefs/.
+or write code. Its primary output is a markdown document saved to 
+docs/briefs/; on approval it also adds the brief link to that 
+functionality's row in the build plan's feature matrix and runs a 
+re-prioritisation check — see Step 5.
 
 All rules in the pm-guardrails skill apply 
 throughout this skill. If pm-guardrails has 
@@ -160,6 +162,15 @@ drawn from:
 Do not repeat the full CLAUDE.md — extract only 
 what is directly relevant to this functionality.
 
+## Design approach (new-UI items only)
+For items that introduce new UI (a new screen or component), 
+include a one-line design approach: *direct build*, *direct 
+build + mockup checkpoint*, or *design-first ticket* — following 
+the project's documented UI design workflow (e.g. a repo 
+CLAUDE.md "UI design workflow" section). Wiring an 
+already-designed screen is implicitly *direct build*. Omit this 
+line for non-UI (e.g. backend) items.
+
 ## Open questions
 Any unresolved questions relevant to this functionality.
 For each:
@@ -189,7 +200,32 @@ Wait for user approval before finalising.
 If the user requests changes, update the document 
 and wait for approval again.
 
-After approval, stop completely.
-The brief is now ready for use in a future 
-Build session.
-Do not begin any implementation work in this session.
+After approval, before finishing, update the build plan to reflect
+the approved brief:
+
+1. Add the brief link to the feature matrix. In the build plan's
+   feature matrix, put a link to the saved brief in this item's Brief
+   column — the link is what signals the brief exists (there is no
+   status field to set). If the build plan has no feature matrix yet
+   (e.g. it predates this convention), do not silently skip: tell the
+   user the matrix is missing and offer to add one. Edit the plan
+   document in place and follow the project's convention for when
+   planning documents are committed (e.g. leave uncommitted if the
+   project batches planning docs). Change nothing else in the plan.
+2. Re-prioritisation check. Now that the brief has surfaced more
+   detail, consider whether anything learned while writing it — new
+   dependencies, wider scope, more effort or risk, or that it now
+   spans more repos than expected — changes this item's priority or
+   its position in build order. If it might, present the recommended
+   change and your reasoning to the user in plain English and wait
+   for their decision. Never change a priority or reorder the plan
+   yourself — flag it; the user decides. If nothing changed, state
+   that priority and build order were reconfirmed.
+
+This per-brief check catches drift one item at a time. A broader
+review of priorities across all briefed items belongs at the
+project's Gap Check.
+
+Once the matrix is updated and any re-prioritisation is resolved,
+stop completely. The brief is now ready for use in a future Build
+session. Do not begin any implementation work in this session.

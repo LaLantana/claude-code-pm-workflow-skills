@@ -3,6 +3,7 @@ name: pm-guardrails
 description: Core working rules for a non-developer Product Manager 
 using Claude Code. Load at the start of every session across all 
 projects.
+disable-model-invocation: true
 ---
 
 # PM Guardrails
@@ -91,6 +92,30 @@ self-check (end-session, code-review, merge-documentation)
 may commit and push their own documentation autonomously, 
 provided their self-check passes. This is the only waiver 
 to the rules above.
+
+## Pre-publish hygiene
+Before committing a batch of work — documentation or code — 
+review the full working tree, not just the staged diff. 
+Include staged, unstaged, and untracked files.
+- Commit only what belongs to the batch you are publishing — 
+  nothing else.
+- If an unrelated change is present — a configuration file, a 
+  security or `.gitignore` change, a dependency tweak — do not 
+  fold it into the batch. Commit it separately as its own 
+  logical change, or leave it for the user to decide. One 
+  commit per concern.
+- Exclude scratch, temporary, or draft files (e.g. a 
+  `*-TEMP.*` file) from the commit — never publish them.
+- Flag anything that looks like a secret — API keys, tokens, 
+  passwords, a `.env` file — and stop. Never commit it.
+- Untracked files do not appear in a normal diff, so list 
+  them explicitly — a stray file or secret is easy to miss 
+  otherwise.
+State plainly what you intend to commit, and what you are 
+deliberately leaving out, then wait for approval before 
+committing (per the Human-in-the-loop moments above). The 
+unattended docs-only skills named in the waiver above run 
+their own version of this check instead.
 
 ## Loop guardrail
 If you reach a point where user input would resolve a blockage 

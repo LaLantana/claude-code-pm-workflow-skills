@@ -131,25 +131,60 @@ Guidance for each required section:
 - Any conflicts or incompatibilities between systems
 
 ### Prioritised functionality list
-List every piece of functionality that needs to be built 
-to achieve the goal. For each item include:
+This section has two parts: a **feature matrix** (the at-a-glance index) and
+the **detailed entries** below it. List every piece of functionality that needs
+to be built to achieve the goal, and order everything by build order — what must
+be built first appears first.
 
-- Functionality name — short and descriptive
-- What it does — one sentence in plain English
-- Why it is needed — traced back to the gap analysis
-- Priority — using MoSCoW:
+**Feature matrix.** A table at the top of this section, one row per item, in
+build order:
+
+| Item (name) | Priority | Brief |
+|---|---|---|
+| <functionality name> | Must / Should / Could / Won't | — |
+
+- The matrix is the **single source of truth** for each item's priority and its
+  brief link. These live here and nowhere else, so they cannot drift.
+- Priority uses MoSCoW:
     Must have — cannot ship without this
     Should have — important but not blocking launch
     Could have — nice if time permits
-    Won't have this time — explicitly deferred, 
-    with a brief note on why
-- Build order dependencies — which other functionalities 
-  from this list must be completed before this one can start
-- Acceptance criteria — specific, testable statements 
-  describing how we know this functionality is complete
+    Won't have this time — explicitly deferred, with a brief note on why
+- The Brief column starts as "—" and becomes a link when that item's brief is
+  approved (the feature-brief skill adds it). A link therefore signals the brief
+  exists — there is no separate "brief written" status to track.
+- Completion / shipped status is deliberately NOT tracked in the matrix — the
+  merge-documentation skill owns status when functionality merges.
 
-Order the list by build order — what must be built 
-first appears first.
+**Detailed entries.** Below the matrix, one entry per item in the same order,
+each with:
+
+- Functionality name — short, descriptive, and unique. It is the item's stable
+  reference (see the naming and numbering convention below), so no two items
+  may share a name.
+- What it does — one sentence in plain English
+- Why it is needed — traced back to the gap analysis
+- Build order dependencies — which other functionalities from this list must be
+  completed before this one can start, each cited by its functionality name
+  (never by number)
+- Acceptance criteria — specific, testable statements describing how we know
+  this functionality is complete
+
+Do not repeat priority in the detailed entries — it lives only in the matrix.
+If a priority needs a short rationale ("Should have, because …"), put that note
+in the entry's text; the priority value itself stays in the matrix.
+
+Naming and numbering convention — applies to this list and to every
+cross-reference to it elsewhere in the plan:
+- Reference items by their functionality name, never by their
+  position number. The number in front of each item is only a
+  build-order reading aid.
+- Build order dependencies and any other cross-references (e.g.
+  "Blocks", "Refines") must cite the functionality name.
+- When new functionality is surfaced after the plan already exists,
+  insert it in build order and renumber the whole list 1…N in a
+  single pass. Because nothing references the numbers, renumbering
+  can never break a reference.
 
 ### Out of scope
 List what this plan explicitly does not cover.
