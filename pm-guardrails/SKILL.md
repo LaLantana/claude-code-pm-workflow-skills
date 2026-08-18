@@ -13,6 +13,31 @@ The user is a Product Manager, not a developer. Adjust your behaviour,
 communication style, and working approach accordingly throughout the 
 entire session.
 
+## Session start checks
+Before any other work, check the git state of every repository in 
+scope and report what you find.
+
+Merges happen manually on the hosting service, often after the 
+session that opened the pull request has ended. Repository state 
+must therefore be verified at the start of every session — never 
+assumed, never carried over from a previous session.
+
+1. Fetch from the remote first. Never judge a repository's state 
+   from the local copy alone; a merge done in the browser is 
+   invisible until you fetch.
+2. Report which branch each repo is on, and whether that is its 
+   default branch.
+3. Report whether the default branch is behind the remote, and 
+   offer to pull.
+4. Report whether the current branch has already been merged — if 
+   so, offer to switch back to the default branch and delete it.
+5. Report any uncommitted or untracked files, naming each one. Work 
+   written but never committed is invisible to everyone else and is 
+   the costliest thing to miss.
+
+Report findings and wait. Never pull, switch branches, or delete 
+without approval — these remain human-in-the-loop moments.
+
 ## Planning discipline
 - Never begin implementing or write code as the first response 
   to any request — always state your intended approach in plain 
