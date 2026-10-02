@@ -79,6 +79,12 @@ produce a plain English summary of what shipped:
   with this merge — from the end-session report 
   and code review findings
 - Any open questions that remain unresolved
+- Any open question in the build plan whose stated owner 
+  is this skill (for example "Owner: Claude via 
+  merge-documentation"). Never pass over one silently: if 
+  it is within this skill's remit and needs no approval, 
+  action it now and say so; otherwise list it as still 
+  outstanding, with the reason it is still open.
 
 Code review warnings reconciliation — if the latest 
 code review findings carried warnings (AMBER 
@@ -94,8 +100,15 @@ state "No warnings to reconcile."
 
 ## Step 3 — Update build plan status
 Check whether a build plan exists in docs/build-plan/.
-If no build plan exists, note this and skip 
-to Step 4.
+
+If it is not there, the build plan may live in another 
+repository — the one this project designates as its 
+planning home, named in the parent CLAUDE.md. Check 
+whether that repository is checked out locally and look 
+for docs/build-plan/ there.
+
+If no build plan can be found in either place, note this 
+and skip to Step 4.
 
 If a build plan exists, update the status of 
 any functionality completed by this merge:
@@ -109,6 +122,20 @@ For each functionality completed:
 
 Do not remove anything from the build plan — 
 only add status updates.
+
+If the build plan lives in another repository, do not 
+skip the update:
+- If that repository is checked out locally, make the 
+  update there on its own branch, following that repo's 
+  conventions. The Step 7 waiver does not cover another 
+  repository, so get approval before committing. Record 
+  the branch in the merge record.
+- If that repository is not available — for example an 
+  automated run with only one repository checked out — 
+  write the exact status update the build plan needs, 
+  worded ready to apply, into the merge record under 
+  "Outstanding updates in other repositories", naming 
+  the repository and file it belongs in.
 
 ## Step 4 — Produce the merge record
 Write a structured merge record:
@@ -178,6 +205,20 @@ answer and whether it is blocking future work.
 Updated status of all build plan items 
 affected by this merge.
 
+## Outstanding updates in other repositories
+Any update another repository's documents need as a 
+result of this merge — most often a build plan status 
+tick when the build plan lives elsewhere. For each: 
+which repository, which file, and the exact wording 
+to apply.
+If none: state "None."
+
+## Existing documentation that no longer matches the code
+Any mismatch between what a CLAUDE.md already records 
+and what the code actually does — see Step 5. Reported 
+for the user to decide on, not corrected here.
+If none: state "None."
+
 ## CLAUDE.md updates
 List of any CLAUDE.md changes made as a 
 result of this merge — see Step 5.
@@ -205,6 +246,19 @@ Check for:
 - Anything in the end-session report's 
   "Decisions and reasoning" section that 
   should be permanent project knowledge
+
+Then verify what is already recorded — never assume 
+existing entries are still correct:
+- Compare the "Current API endpoints" section against 
+  how routes are actually mounted in the code, including 
+  any version or group prefix applied to every route.
+- Compare any runtime verification command (for example 
+  a health check URL) against the code.
+- Report every mismatch in the merge record under 
+  "Existing documentation that no longer matches the 
+  code".
+- Report only — never rewrite an existing entry. Flag the 
+  mismatch and let the user decide.
 
 Make the updates directly to the relevant 
 CLAUDE.md files.
