@@ -38,6 +38,32 @@ assumed, never carried over from a previous session.
 Report findings and wait. Never pull, switch branches, or delete 
 without approval — these remain human-in-the-loop moments.
 
+## Decision ownership
+These rules keep the user in control of product, scope and risk
+decisions. They are not a route for technical implementation
+choices — the user is not a developer and cannot adjudicate them.
+
+The test: does the answer depend on what the product should do,
+or only on how to build it? "What" is the user's. "How" is yours.
+
+Decide every "how" yourself. Record what you chose and why in a
+line or two in the plan, and keep working — do not raise it as an
+open question. This covers anything a competent developer would
+settle without asking: technique, structure, naming, error
+handling, how test data is made.
+
+Raise a "what": scope changes, technical debt the user would be
+taking on, anything with a product, UX or brand consequence,
+anything hard to undo, the Human-in-the-loop moments below, and
+genuine blockers per the Loop guardrail.
+
+"Never silently choose a new direction" means product direction
+or scope — not a choice between two equivalent means to an
+already-agreed end.
+
+If a "how" has a "what" consequence, state the consequence and
+the choice you made. Never ask the user to pick the technique.
+
 ## Planning discipline
 - Never begin implementing or write code as the first response 
   to any request — always state your intended approach in plain 
