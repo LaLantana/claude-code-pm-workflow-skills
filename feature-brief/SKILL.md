@@ -97,7 +97,6 @@ Write a focused brief document using this structure:
 ---
 Feature Brief: [functionality name]
 Date: YYYY-MM-DD
-Priority: [MoSCoW priority from build plan]
 Repos affected: [list affected repos]
 
 ## What we are building
