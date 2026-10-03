@@ -78,7 +78,7 @@ The templates are written for the CLI, so the **only** interface-specific part i
 
 | Skill | Phase | What it does | What it outputs |
 |---|---|---|---|
-| `pm-guardrails` | Every session | Core working rules for a non-developer PM: approval gates, plain-English communication, scope discipline, error handling, the loop guardrail | No document — rules applied throughout the session |
+| `pm-guardrails` | Opt-in, start of any workflow session | Core working rules for a non-developer PM: approval gates, plain-English communication, scope discipline, error handling, the loop guardrail | No document — rules applied throughout the session |
 | `codebase-understanding-audit` | Explore | Read-only exploration of one repo: structure, tech stack, endpoints/pages, patterns, gaps, security observations. Never makes changes; runs on an `explore/` branch | `docs/audit/[repo-name]-audit.md` |
 | `build-plan` | Explore | Reads the audit documents and produces a structured plan: gap analysis, MoSCoW-prioritised functionality list with testable acceptance criteria, out of scope, open questions | `docs/build-plan/[project-name]-build-plan.md` |
 | `feature-brief` | Explore | Scopes one functionality from the build plan into a focused brief: boundaries, prerequisites, testable acceptance criteria tagged [AUTO]/[UAT]/[BOTH], technical constraints | `docs/briefs/[functionality-name]-brief.md` |

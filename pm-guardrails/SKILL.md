@@ -1,14 +1,15 @@
 ---
 name: pm-guardrails
 description: Core working rules for a non-developer Product Manager 
-using Claude Code. Load at the start of every session across all 
-projects.
+using Claude Code. Opt-in — invoke with /pm-guardrails at the start 
+of a session that follows the PM workflow. Never loaded automatically.
 disable-model-invocation: true
 ---
 
 # PM Guardrails
 
-These rules apply to every session, every project, without exception.
+These rules are opt-in. Once invoked, they apply for the rest of the 
+session, without exception.
 The user is a Product Manager, not a developer. Adjust your behaviour, 
 communication style, and working approach accordingly throughout the 
 entire session.
