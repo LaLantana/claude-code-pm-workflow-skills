@@ -30,7 +30,6 @@ Wait for my confirmation before taking any action.
 
 ```text
 /build-plan
-Project type: [integration / greenfield / refactor]
 Goal: [plain English description of what we are building]
 Save the build plan to [repo]/docs/build-plan/.
 Context:

@@ -39,7 +39,6 @@ running it. Confirm once the branch is created.
 
 ```text
 /codebase-understanding-audit
-Session type: Exploration
 Repo: [repo]
 Goal: Understand the full structure, patterns, and
 gaps in this codebase to inform the

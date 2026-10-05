@@ -53,7 +53,6 @@ Wait for my confirmation before taking any action.
 
 ```text
 /execution-plan
-Session type: Feature
 Goal: [brief description]
 Context:
 - docs/briefs/[functionality-name]-brief.md
@@ -107,7 +106,6 @@ Wait for my confirmation before taking any action.
 
 ```text
 /execution-plan
-Session type: Fix
 Goal: [brief description of what to fix]
 Context:
 - docs/briefs/[functionality-name]-brief.md
@@ -186,7 +184,6 @@ No terminal command needed — already in session.
 
 ```text
 /execution-plan
-Session type: Course correction
 Goal: [plain English description of new direction]
 Context:
 - docs/plans/[original-plan-filename].md

@@ -43,6 +43,11 @@ immediately to Step 2.
 ## Step 2 — Identify scope
 Based on the context provided, identify and state 
 in plain English:
+- The session type, inferred from the context: Fix if 
+  the context includes code-review findings or an 
+  end-session report for an existing branch; Course 
+  correction if invoked mid-session against an existing 
+  plan; otherwise Feature
 - What is being built or fixed — one clear sentence
 - What is explicitly out of scope
 - Which files will be affected

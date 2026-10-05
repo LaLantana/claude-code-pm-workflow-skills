@@ -2,16 +2,16 @@
 name: build-plan
 description: Analyses audit documents and produces a structured 
 build plan for any project type. Invoke after codebase-understanding-audit 
-or an equivalent audit has been completed. Provide project type and 
-goal in the invocation prompt.
+or an equivalent audit has been completed. Provide the goal in the 
+invocation prompt.
 disable-model-invocation: true
 ---
 
 # Build Plan
 
 This skill reads audit documents and produces a structured build 
-plan. It adapts its output structure to the project type declared in 
-the invocation prompt. It does not write code, make implementation 
+plan. It adapts its output structure to the kind of project it 
+infers from the goal and the audit documents. It does not write code, make implementation 
 decisions, or begin any execution work. Its sole output is a markdown 
 document saved to docs/build-plan/.
 
@@ -70,6 +70,9 @@ in plain English:
   invocation prompt
 - What the gap is — the difference between what exists 
   and what the goal requires
+- What kind of project this is — integration, greenfield, 
+  redesign or refactor, or a mix — inferred from the goal 
+  and the audit documents
 - Who the end users are and what they need
 - Any constraints, dependencies, or risks that are 
   immediately apparent
@@ -81,9 +84,8 @@ If your understanding is wrong, ask the user to clarify
 before continuing.
 
 ## Step 3 — Determine output structure
-Based on the project type declared in the invocation prompt 
-and your understanding from Step 2, determine which sections 
-are relevant for this plan.
+Based on the kind of project identified and confirmed in 
+Step 2, determine which sections are relevant for this plan.
 
 Required in every plan:
 - Project overview
