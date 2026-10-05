@@ -86,4 +86,6 @@ This repo carries its own `docs/` at the root: `docs/audit/`, `docs/plans/`,
 ## Documentation rules
 - Keep entries concise (one or two lines). Show proposed doc updates and wait for
   approval before writing. Date new entries `YYYY-MM-DD`.
+  (Exception: after a merge, the `merge-documentation` skill adds new entries
+  directly. It only reports mismatches in existing entries and never rewrites them.)
 - [What's worth documenting here: new endpoints, dependencies, decisions, patterns.]
