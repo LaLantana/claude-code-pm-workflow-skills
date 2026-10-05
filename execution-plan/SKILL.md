@@ -90,7 +90,8 @@ Fix session addressing code-review findings → the branch
   under review, named in the findings; stay on it, do 
   not create a new branch
 Standalone fix with no branch under review → fix/[descriptive-name]
-Course correction → fix/[descriptive-name]-correction
+Course correction → the current branch; stay on it, do 
+  not create a new branch
 Concise, lowercase, hyphenated, reflects the goal.
 
 ## Implementation steps
@@ -121,6 +122,8 @@ If session type is Course correction:
 - Scope the new plan only to what has changed — 
   do not re-plan work that was already completed 
   successfully
+- Stay on the current branch — the corrected work 
+  continues where the original work was
 
 ## Step 4 — Save the document
 Save the plan document to:
@@ -147,7 +150,8 @@ and wait for approval again.
 After approval:
 - Create the suggested branch as the very 
   first action (for a Fix session on the branch 
-  under review, confirm you are on it instead)
+  under review, or a Course correction, confirm 
+  you are on the existing branch instead)
 - Do not touch any implementation files before 
   the branch exists (the saved plan document is 
   the only file that already exists)
