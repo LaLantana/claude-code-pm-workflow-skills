@@ -139,12 +139,13 @@ be built first appears first.
 **Feature matrix.** A table at the top of this section, one row per item, in
 build order:
 
-| Item (name) | Priority | Brief |
-|---|---|---|
-| <functionality name> | Must / Should / Could / Won't | — |
+| Item (name) | Priority | Brief | Status |
+|---|---|---|---|
+| <functionality name> | Must / Should / Could / Won't | — | — |
 
-- The matrix is the **single source of truth** for each item's priority and its
-  brief link. These live here and nowhere else, so they cannot drift.
+- The matrix is the **single source of truth** for each item's priority, its
+  brief link, and its status. These live here and nowhere else, so they cannot
+  drift.
 - Priority uses MoSCoW:
     Must have — cannot ship without this
     Should have — important but not blocking launch
@@ -153,8 +154,9 @@ build order:
 - The Brief column starts as "—" and becomes a link when that item's brief is
   approved (the feature-brief skill adds it). A link therefore signals the brief
   exists — there is no separate "brief written" status to track.
-- Completion / shipped status is deliberately NOT tracked in the matrix — the
-  merge-documentation skill owns status when functionality merges.
+- The Status column starts as "—" and is set by the merge-documentation skill
+  when the item ships (shipped date, PR link, merge record link). Nothing else
+  writes to it; build-plan and feature-brief leave it as "—".
 
 **Detailed entries.** Below the matrix, one entry per item in the same order,
 each with:

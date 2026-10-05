@@ -204,8 +204,9 @@ the approved brief:
 
 1. Add the brief link to the feature matrix. In the build plan's
    feature matrix, put a link to the saved brief in this item's Brief
-   column — the link is what signals the brief exists (there is no
-   status field to set). If the build plan has no feature matrix yet
+   column — the link is what signals the brief exists. Leave the
+   Status column untouched; merge-documentation owns it. If the build
+   plan has no feature matrix yet
    (e.g. it predates this convention), do not silently skip: tell the
    user the matrix is missing and offer to add one. Edit the plan
    document in place and follow the project's convention for when

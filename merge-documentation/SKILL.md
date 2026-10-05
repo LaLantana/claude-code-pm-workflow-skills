@@ -113,15 +113,20 @@ and skip to Step 4.
 If a build plan exists, update the status of 
 any functionality completed by this merge:
 
-For each functionality completed:
-- Mark as shipped with the merge date
-- Note the PR title and URL
-- Note the merge record filename for traceability
-- Note any acceptance criteria that were 
-  partially met, not met, or deferred
+For each functionality completed, set its Status 
+cell in the feature matrix to:
+  Shipped YYYY-MM-DD · [PR](PR URL) · [merge record](path)
+If any acceptance criteria were partially met, 
+not met, or deferred, append " · see merge record" 
+and record the detail in the merge record itself, 
+not in the matrix.
+
+If the build plan has no Status column (it predates 
+this convention), tell the user and offer to add one 
+before writing the status.
 
 Do not remove anything from the build plan — 
-only add status updates.
+only set status.
 
 If the build plan lives in another repository, do not 
 skip the update:
