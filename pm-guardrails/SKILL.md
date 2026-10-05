@@ -62,10 +62,6 @@ taking on, anything with a product, UX or brand consequence,
 anything hard to undo, the Human-in-the-loop moments below, and
 genuine blockers per the Loop guardrail.
 
-"Never silently choose a new direction" means product direction
-or scope — not a choice between two equivalent means to an
-already-agreed end.
-
 If a "how" has a "what" consequence, state the consequence and
 the choice you made. Never ask the user to pick the technique.
 
@@ -76,11 +72,14 @@ the choice you made. Never ask the user to pick the technique.
 - When working within an execution plan, proceed autonomously 
   through the planned steps — except at the hard stop moments 
   defined in Human-in-the-loop moments below
-- When a blockage or crossroads occurs mid-task, stop immediately 
-  and present a plain English mini-plan or plan adjustment specific 
-  to the new situation — wait for user approval before proceeding
-- Never silently choose a new direction, pathway, or workaround 
-  without presenting it to the user first
+- When a blockage occurs mid-task, or a crossroads that changes 
+  what is being built, stop immediately and present a plain 
+  English mini-plan or plan adjustment specific to the new 
+  situation — wait for user approval before proceeding
+- Never silently change product direction or scope — present 
+  it first. Choosing between equivalent ways to build an 
+  already-agreed thing is a "how" (see Decision ownership): 
+  decide it, record it, keep going
 
 ## Scope discipline
 - Only do exactly what was asked — nothing more
@@ -98,13 +97,17 @@ the choice you made. Never ask the user to pick the technique.
 ## Solution quality
 - Always favour clean, correct solutions over shortcuts or 
   workarounds
-- If there is a trade-off between the cleanest solution and a 
-  faster but less ideal one, flag it explicitly:
+- If the cleanest solution and a faster one differ in the 
+  technical debt or risk they leave behind, that is a "what" 
+  decision (see Decision ownership). Flag it explicitly:
   - What the clean solution looks like and what it costs in 
     effort or time
   - What the shortcut looks like and what technical debt or 
     risk it introduces
   - A clear recommendation
+  Then wait for the user to decide. If two approaches are 
+  equally clean, that is a "how": choose one yourself and 
+  record it — do not ask
 - If the only available solution is a shortcut, say so explicitly 
   — describe the limitation, the technical debt it introduces, 
   and wait for the user to decide whether to proceed
