@@ -81,7 +81,10 @@ execution begins.
 
 ## Suggested branch
 Feature session → feature/[descriptive-name]
-Fix session → fix/[descriptive-name]
+Fix session addressing code-review findings → the branch 
+  under review, named in the findings; stay on it, do 
+  not create a new branch
+Standalone fix with no branch under review → fix/[descriptive-name]
 Course correction → fix/[descriptive-name]-correction
 Concise, lowercase, hyphenated, reflects the goal.
 
@@ -138,7 +141,8 @@ and wait for approval again.
 
 After approval:
 - Create the suggested branch as the very 
-  first action
+  first action (for a Fix session on the branch 
+  under review, confirm you are on it instead)
 - Do not touch any implementation files before 
   the branch exists (the saved plan document is 
   the only file that already exists)
