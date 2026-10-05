@@ -44,4 +44,4 @@
 ## Branch cleanup
 
 - Remote (GitHub): enable "Automatically delete head branches" per repo — merged branches delete on merge.
-- Local: /execution-plan flags any leftover merged local branches for you to delete.
+- Local: the pm-guardrails session start checks flag any leftover merged local branches for you to delete.

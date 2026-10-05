@@ -143,7 +143,5 @@ After approval:
   the branch exists (the saved plan document is 
   the only file that already exists)
 - Confirm branch creation to the user
-- If any local branches from previously-merged work 
-  remain, flag them to the user as safe to delete
 - Then proceed with Step 1 of the implementation 
   plan
