@@ -207,8 +207,13 @@ Derive out of scope items from:
 List anything unresolved that could affect the plan.
 For each question:
 - State the question clearly
-- Tag who needs to answer it — user, a developer, 
-  or external party
+- Tag who needs to answer it, as "Owner: …" — the user, 
+  a developer, an external party, or a workflow skill 
+  that can resolve it on its own (for example 
+  "Owner: Claude via merge-documentation", for a question 
+  the merge record will answer once the item ships). The 
+  merge-documentation skill checks for questions assigned 
+  to it on every run.
 - State whether it is blocking (must resolve before 
   starting) or non-blocking (can resolve during build)
 
