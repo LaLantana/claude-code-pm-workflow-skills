@@ -28,9 +28,9 @@ pm-guardrails/SKILL.md before proceeding.
   as an open question
 - Always confirm you are on an explore/ branch before starting
 - If the codebase is too large to audit completely within 
-  context limits, stop and tell the user — propose scoping 
-  the audit to the most relevant folders and wait for approval 
-  before proceeding
+  context limits even with the subagent approach in Step 1b, 
+  stop and tell the user — propose scoping the audit to the 
+  most relevant folders and wait for approval before proceeding
 
 ## Step 1 — Confirm branch and detect repository type
 First confirm you are on an explore/ branch. If not, stop and 
