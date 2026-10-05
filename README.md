@@ -151,7 +151,7 @@ cp -R pm-guardrails codebase-understanding-audit build-plan feature-brief \
       merge-documentation ~/.claude/skills/
 ```
 
-The `templates/` folder holds two kinds of starting point: the **session prompts** that drive the workflow (terminal commands, startup prompts, and skill invocations for each phase), and the two **CLAUDE.md skeletons** (`repo-CLAUDE-template.md`, `parent-CLAUDE-template.md`). Copy the session prompts, replace the placeholders (`[project-name]`, `[repo-a]`/`[repo-b]`, `[path-to-your-repos]`), and adapt them to your project.
+The `templates/` folder holds the **session prompts** that drive the workflow (terminal commands, startup prompts, and skill invocations for each phase), the two **CLAUDE.md skeletons** (`repo-CLAUDE-template.md`, `parent-CLAUDE-template.md`), the two **routine prompts** for the GitHub Actions still to be built, and two short **reference notes** (`workflow-overview.md`, `doc-saving-pathways.md`). Copy the session prompts, replace the placeholders (`[project-name]`, `[repo-a]`/`[repo-b]`, `[path-to-your-repos]`), and adapt them to your project.
 
 ## Requirements
 
