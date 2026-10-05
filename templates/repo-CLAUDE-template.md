@@ -44,6 +44,8 @@ to check the environment before working.]
 
 ## Conventions & patterns
 - [Naming conventions; language for code/comments; patterns to always follow]
+- Design system and UI workflow: see `DESIGN.md` — read it before any UI work.
+  Keep design specs there, not here. (Delete this line if the repo has no UI.)
 - [Step-by-step pattern for adding a common thing — e.g. a new API route or
   page — documented well enough to follow without re-reading the whole codebase]
 

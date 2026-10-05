@@ -165,10 +165,10 @@ what is directly relevant to this functionality.
 For items that introduce new UI (a new screen or component), 
 include a one-line design approach: *direct build*, *direct 
 build + mockup checkpoint*, or *design-first ticket* — following 
-the project's documented UI design workflow (e.g. a repo 
-CLAUDE.md "UI design workflow" section). Wiring an 
-already-designed screen is implicitly *direct build*. Omit this 
-line for non-UI (e.g. backend) items.
+the project's DESIGN.md, if one exists. Do not repeat design 
+specs here; point to DESIGN.md. Wiring an already-designed 
+screen is implicitly *direct build*. Omit this line for non-UI 
+(e.g. backend) items, or if the project has no DESIGN.md.
 
 ## Open questions
 Any unresolved questions relevant to this functionality.
