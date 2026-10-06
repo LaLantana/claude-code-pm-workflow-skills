@@ -7,8 +7,11 @@ disable-model-invocation: true
 # Build Feature
 
 Takes a feature ID (for example `/build-feature 2.4`) whose matrix Status is
-`Story approved`, `In build` or `In review`, and drives it to an open pull
-request. The user
+`Story approved`, `In build` or `In review` (in Linear: Todo, In Progress or In
+Review), and drives it to an open pull request. The matrix lives in Google
+Sheets or Linear; the `Tracker:` line in CLAUDE.md says which, and the feature
+is found by its ID (the row whose column B is the ID, or the issue whose title
+starts with the ID and a space). The user
 approves twice: the plan before any code, and the PR before it opens. Everything
 between is yours. Follow the working rules in the repo's CLAUDE.md throughout.
 
@@ -29,9 +32,10 @@ the current branch, whether the default branch is behind the remote (offer to
 pull), and any uncommitted or untracked files by name, except those CLAUDE.md
 records as known and story files under `docs/stories/` waiting for their build.
 
-Then check for shipped work: for every matrix row whose Status is `In review`,
-look up its PR (`gh pr list --state merged --search "[id]"`). If the PR has
-merged, write the merge record and set that row's Status to `Shipped YYYY-MM-DD`.
+Then check for shipped work: for every feature whose Status is `In review`
+(Linear: In Review), look up its PR (`gh pr list --state merged --search "[id]"`).
+If the PR has merged, write the merge record and set that feature's Status to
+`Shipped YYYY-MM-DD` (Linear: move it to Done and comment with the merge date).
 This works from any clone and does not depend on local branches. The record is
 committed as the first commit on the branch this session will work on (Step 1),
 because the default branch is never committed to directly; it ships with the
@@ -73,7 +77,7 @@ Resume (Status `In build`): a previous session stopped before the PR. Switch to
 the feature branch, read the existing plan and the commits so far, and state
 what is done and what remains. The plan is updated, not rewritten.
 
-Stop and say so if an ID in the row's Depends on column is not `Shipped`, or
+Stop and say so if an ID in the feature's Depends on is not `Shipped` (Linear: Done), or
 the story has a blocking open question.
 
 Write `docs/plans/[id]-plan.md`:
@@ -109,7 +113,7 @@ After approval: new build → pull the default branch and create
 `feature/[id]-[slug]` from it. Fix round → switch to the PR's head branch and
 pull it. Resume → stay on the feature branch. Then commit the plan, the story
 if it is not yet committed, and any merge record from Step 0, and set the matrix
-Status to `In build`.
+Status to `In build` (Linear: In Progress).
 
 ## Step 2 — Implement and test
 For each step in the plan: write the tests for the criteria that step covers,
@@ -164,8 +168,9 @@ Present it. **Wait for approval.** Before pushing, check the branch: only files
 the plan lists plus `docs/`, no secrets, no scratch or temporary files. Then push
 (the permission prompt is the gate). New build: `gh pr create` with title
 `feat: [feature name] ([id])`. Fix round: the push updates the open PR; post one
-comment summarising the round. Set the matrix Status to `In review`. Report the
-PR URL and remind the user that the UAT checklist is in the PR.
+comment summarising the round. Set the matrix Status to `In review` (Linear: In
+Review, and put the PR URL in a comment on the issue). Report the PR URL and
+remind the user that the UAT checklist is in the PR.
 
 ## When to stop
 Only three things stop the loop: a "what" decision, a blocker still standing

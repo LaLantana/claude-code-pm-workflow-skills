@@ -15,9 +15,11 @@
 -->
 
 ## Project settings
-- Language: [language for documents, stories and the feature matrix rows — e.g. English]
-- Stakeholder reviewer: [name and role, or delete this line if there is none]
-- Feature matrix: [link to the project's Google Sheet, added by /project-plan]
+- Tracker: [Google Sheets or Linear — where the feature matrix lives; default Google Sheets]
+- Linear team: [team key, e.g. SHE — only if Tracker is Linear]
+- Language: [language for documents, stories and the feature matrix — e.g. English]
+- Stakeholder reviewer: [name and role, or delete this line if there is none; Google Sheets only]
+- Feature matrix: [link to the Google Sheet or the Linear project, added by /project-plan]
 
 ## Context
 <!-- Several repos only — delete this whole section if you have ONE repo. -->
@@ -68,7 +70,7 @@ This section is the single source of truth for the API surface.
 ## Workflow documents
 This repo carries its own `docs/` at the root:
 - `docs/audit/` — codebase audit (from /code-audit)
-- `docs/project-plan.md` — the project plan; links to the feature matrix sheet
+- `docs/project-plan.md` — the project plan; links to the feature matrix
 - `docs/stories/` — one story per feature (from /story)
 - `docs/plans/` — one execution plan per feature, rewritten on fix rounds (from /build-feature)
 - `docs/releases/` — one merge record per shipped feature (from /build-feature)

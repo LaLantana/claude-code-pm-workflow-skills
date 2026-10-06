@@ -15,7 +15,7 @@ folders is untouched.
 
 ```
 /code-audit        once per existing repo        → docs/audit/[repo]-audit.md
-/project-plan      once per project              → docs/project-plan.md (one docs PR) + the feature matrix (Google Sheet)
+/project-plan      once per project              → docs/project-plan.md (one docs PR) + the feature matrix (Google Sheet or Linear project)
         │
         ▼  per feature, in build order
 /story [id]        just before building it       → docs/stories/[id]-[slug].md, matrix row → "Story approved"
@@ -39,7 +39,7 @@ and updates the open PR. The PM relays nothing.
 | Skill | When | What it produces |
 |---|---|---|
 | `code-audit` | Once per existing repo | Read-only audit: structure, stack, endpoints or pages, patterns, gaps, security observations. `docs/audit/[repo]-audit.md` |
-| `project-plan` | Once per project | A mini PRD at `docs/project-plan.md`, and the feature matrix: one Google Sheet per project, created in a Drive folder named after the project, with Area, ID, Feature, Source, Description, Impact, Effort, Priority, Phase, Depends on, Story, Status, and optional stakeholder columns. The plan links to it |
+| `project-plan` | Once per project | A mini PRD at `docs/project-plan.md`, and the feature matrix: Area, ID, Feature, Source, Description, Impact, Effort, Priority, Phase, Depends on, Story, Status. In Google Sheets (a formatted sheet in a Drive folder named after the project, with optional stakeholder columns) or in Linear (a project with one issue per feature), chosen per project. The plan links to it |
 | `story` | Once per feature, just before building it | A testable ticket at `docs/stories/[id]-[slug].md`: what we are building, why, what it is not, prerequisites, acceptance criteria tagged [AUTO]/[UAT]/[BOTH], technical constraints, open questions. Links itself from the matrix and may add rows the story reveals |
 | `build-feature` | Once per feature, and again for each fix round | The build loop: session start checks and merge records, execution plan, implementation with a test per criterion, an adversarial review by a subagent until GREEN or AMBER, and the PR with a UAT checklist. Bounded attempts; stops with an escalation note the PM can forward |
 
@@ -78,9 +78,10 @@ full matrix specification.
    first time you open the repo in Claude Code, accept the trust dialog;
    until then the settings file is ignored.
 
-4. **Connect Google Drive and Google Sheets** in Claude Code, so
-   `/project-plan` can create a project folder and the feature matrix inside it,
-   and `/story` and `/build-feature` can update the matrix.
+4. **Connect the tracker.** Google Drive and Google Sheets for a sheet-based
+   matrix (the default), or Linear for a Linear-based one. Set `Tracker:` under
+   Project settings in the repo's CLAUDE.md. One per project; there is no
+   mirroring between them.
 
 5. **Keep design specs in `DESIGN.md`**, not in CLAUDE.md. `/project-plan` flags
    a UI project with no `DESIGN.md`, and no UI story is approved until one exists.
@@ -105,8 +106,8 @@ The hook and settings only exist in repos you copy them into.
 ## Documents
 
 Everything a project produces lives under `docs/` in the repo, except the feature
-matrix, which is one Google Sheet per project linked from the plan and from
-CLAUDE.md.
+matrix, which is one Google Sheet or one Linear project per project, linked from
+the plan and from CLAUDE.md.
 
 ```
 docs/audit/[repo]-audit.md           one per repo
@@ -121,7 +122,7 @@ document and matrix cell refers to a feature by its ID.
 
 ## Requirements
 
-- [Claude Code](https://claude.com/claude-code) with the Google Drive and Google Sheets connectors
+- [Claude Code](https://claude.com/claude-code) with the Google Drive and Google Sheets connectors, or the Linear connector
 - git, and a GitHub remote for your repos
 - [GitHub CLI (`gh`)](https://cli.github.com/), logged in, for opening and reading PRs
 - A working mental model of branches, commits, pushes and PRs. If any of those

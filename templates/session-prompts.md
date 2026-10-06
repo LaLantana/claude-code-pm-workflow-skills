@@ -24,8 +24,9 @@ Goal: [what we are building, in plain English]
 Context: [paths to audits, a product description, research notes — optional]
 ```
 
-For a project with a stakeholder reviewer or a non-English language, set the
-`Project settings` lines in CLAUDE.md first; the skill reads them from there.
+Set the `Project settings` lines in CLAUDE.md first; the skill reads them from
+there: `Tracker:` (Google Sheets or Linear), `Linear team:` if Linear,
+`Language:`, and `Stakeholder reviewer:` for a Sheets project with one.
 It ends by opening a docs-only PR with the plan; merge it and pull before the
 first `/story`.
 
