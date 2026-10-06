@@ -70,7 +70,7 @@ This repo carries its own `docs/` at the root:
 - `docs/audit/` — codebase audit (from /code-audit)
 - `docs/project-plan.md` — the project plan; links to the feature matrix sheet
 - `docs/stories/` — one story per feature (from /story)
-- `docs/plans/` — one execution plan per build (from /build-feature)
+- `docs/plans/` — one execution plan per feature, rewritten on fix rounds (from /build-feature)
 - `docs/releases/` — one merge record per shipped feature (from /build-feature)
 <!-- Several repos? The planning home holds docs/project-plan.md and docs/stories/;
      every other repo holds only its own audit, plans and releases. -->

@@ -39,7 +39,7 @@ and updates the open PR. The PM relays nothing.
 | Skill | When | What it produces |
 |---|---|---|
 | `code-audit` | Once per existing repo | Read-only audit: structure, stack, endpoints or pages, patterns, gaps, security observations. `docs/audit/[repo]-audit.md` |
-| `project-plan` | Once per project | A mini PRD at `docs/project-plan.md`, and the feature matrix: one Google Sheet per project, created through the Sheets connector, with Area, ID, Feature, Source, Description, Impact, Effort, Priority, Phase, Story, Status, and optional stakeholder columns. The plan links to it |
+| `project-plan` | Once per project | A mini PRD at `docs/project-plan.md`, and the feature matrix: one Google Sheet per project, created in a Drive folder named after the project, with Area, ID, Feature, Source, Description, Impact, Effort, Priority, Phase, Story, Status, and optional stakeholder columns. The plan links to it |
 | `story` | Once per feature, just before building it | A testable ticket at `docs/stories/[id]-[slug].md`: what we are building, why, what it is not, prerequisites, acceptance criteria tagged [AUTO]/[UAT]/[BOTH], technical constraints, open questions. Links itself from the matrix and may add rows the story reveals |
 | `build-feature` | Once per feature, and again for each fix round | The build loop: session start checks and merge records, execution plan, implementation with a test per criterion, an adversarial review by a subagent until GREEN or AMBER, and the PR with a UAT checklist. Bounded attempts; stops with an escalation note the PM can forward |
 
@@ -54,6 +54,9 @@ full matrix specification.
    ```bash
    cp -R code-audit project-plan story build-feature ~/.claude/skills/
    ```
+
+   Upgrading from v1.0? Delete the eleven old skill folders from the same
+   location first, or both sets will appear in the `/` menu.
 
 2. **Give each repo a CLAUDE.md.** Run `/init` in the repo for a first draft,
    then refine it against [`templates/repo-CLAUDE-template.md`](templates/repo-CLAUDE-template.md).
@@ -75,9 +78,9 @@ full matrix specification.
    first time you open the repo in Claude Code, accept the trust dialog;
    until then the settings file is ignored.
 
-4. **Connect Google Sheets** in Claude Code (the Google Sheets connector), so
-   `/project-plan` can create the feature matrix and `/story` and
-   `/build-feature` can update it.
+4. **Connect Google Drive and Google Sheets** in Claude Code, so
+   `/project-plan` can create a project folder and the feature matrix inside it,
+   and `/story` and `/build-feature` can update the matrix.
 
 5. **Keep design specs in `DESIGN.md`**, not in CLAUDE.md. `/project-plan` flags
    a UI project with no `DESIGN.md`, and no UI story is approved until one exists.
@@ -109,7 +112,7 @@ CLAUDE.md.
 docs/audit/[repo]-audit.md           one per repo
 docs/project-plan.md                 one per project (in the planning home, if several repos)
 docs/stories/[id]-[slug].md          one per feature
-docs/plans/[id]-plan.md              one per build or fix round
+docs/plans/[id]-plan.md              one per feature, rewritten on each fix round
 docs/releases/[date]-[id]-merge.md   one per shipped feature
 ```
 
@@ -118,7 +121,7 @@ document and matrix cell refers to a feature by its ID.
 
 ## Requirements
 
-- [Claude Code](https://claude.com/claude-code) with the Google Sheets connector
+- [Claude Code](https://claude.com/claude-code) with the Google Drive and Google Sheets connectors
 - git, and a GitHub remote for your repos
 - [GitHub CLI (`gh`)](https://cli.github.com/), logged in, for opening and reading PRs
 - A working mental model of branches, commits, pushes and PRs. If any of those

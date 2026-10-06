@@ -8,6 +8,7 @@
       "Bash(git diff:*)",
       "Bash(git log:*)",
       "Bash(git fetch:*)",
+      "Bash(git pull:*)",
       "Bash(git branch:*)",
       "Bash(git show:*)",
       "Bash(git add:*)",
@@ -27,6 +28,7 @@
     "ask": [
       "Bash(git push:*)",
       "Bash(gh pr create:*)",
+      "Bash(gh pr comment:*)",
       "Bash(npm install:*)",
       "Bash(npm i:*)",
       "Bash(pip install:*)",
@@ -55,7 +57,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .claude/hooks/block-default-branch-commit.sh"
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/block-default-branch-commit.sh"
           }
         ]
       }
