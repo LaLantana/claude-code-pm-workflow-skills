@@ -1,4 +1,4 @@
-# Feature matrix template
+# Feature matrix specification
 
 One feature matrix per project. It is a Google Sheet, created by `/project-plan`
 through the Google Sheets connector, and it is the single source of truth for each
