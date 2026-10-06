@@ -41,7 +41,8 @@ For a project with a stakeholder reviewer or a non-English language, set the
 /build-feature [id]
 ```
 
-Two approvals during the session: the plan, then the PR.
+Two approvals during the session: the plan, then the PR. If a session stops
+before the PR, run the same command again; it picks up where it left off.
 
 ## Fix round (feedback on an open PR, or a UAT item that failed)
 

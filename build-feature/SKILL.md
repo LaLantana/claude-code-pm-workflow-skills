@@ -7,13 +7,15 @@ disable-model-invocation: true
 # Build Feature
 
 Takes a feature ID (for example `/build-feature 2.4`) whose matrix Status is
-`Story approved` or `In review`, and drives it to an open pull request. The user
+`Story approved`, `In build` or `In review`, and drives it to an open pull
+request. The user
 approves twice: the plan before any code, and the PR before it opens. Everything
 between is yours. Follow the working rules in the repo's CLAUDE.md throughout.
 
 ## Rules
 - Refuse to start without an approved story for the ID. Status must be
-  `Story approved` (new build) or `In review` (fix round on an open PR).
+  `Story approved` (new build), `In build` (a build that stopped before its PR;
+  resume it), or `In review` (fix round on an open PR).
 - Decide every "how"; raise every "what" (CLAUDE.md, Working with a non-coding PM).
 - Bounded effort: three attempts at the same failure, three review rounds. After
   that, write an escalation note and stop.
@@ -26,13 +28,13 @@ between is yours. Follow the working rules in the repo's CLAUDE.md throughout.
 the remote (offer to pull), and any uncommitted or untracked files by name, except
 those CLAUDE.md records as known.
 
-Then check for shipped work: any local `feature/*` branch now merged into the
-default branch (compare against the fetched remote, or `gh pr list --state merged`).
-For each one, write the merge record and set that feature's matrix Status to
-`Shipped YYYY-MM-DD`. The record is committed as the first commit on the branch
-this session will work on (Step 1), because the default branch is never
-committed to directly; it ships with the next PR. Offer to delete the merged local
-branch.
+Then check for shipped work: for every matrix row whose Status is `In review`,
+look up its PR (`gh pr list --state merged --search "[id]"`). If the PR has
+merged, write the merge record and set that row's Status to `Shipped YYYY-MM-DD`.
+This works from any clone and does not depend on local branches. The record is
+committed as the first commit on the branch this session will work on (Step 1),
+because the default branch is never committed to directly; it ships with the
+next PR. Offer to delete the merged local branch if one exists.
 
 Merge record, saved as `docs/releases/[date]-[id]-merge.md`:
 
@@ -59,9 +61,14 @@ the path in the matrix row, `docs/project-plan.md`, `docs/audit/*` if present,
 and `DESIGN.md` if the story has a Design approach line. Run the runtime
 verification from CLAUDE.md.
 
-Fix round (Status `In review`): also read the open PR's review comments with
-`gh pr view --comments` and anything the user said in the prompt (for example
+Fix round (Status `In review`): find the open PR with
+`gh pr list --search "[id]"`, read its review comments with
+`gh pr view --comments`, and anything the user said in the prompt (for example
 which UAT item failed). The plan covers only what the feedback asks for.
+
+Resume (Status `In build`): a previous session stopped before the PR. Switch to
+the feature branch, read the existing plan and the commits so far, and state
+what is done and what remains. The plan is updated, not rewritten.
 
 Stop and say so if a prerequisite ID in the story is not `Shipped`, or the story
 has a blocking open question.
@@ -88,13 +95,16 @@ Goal: [one sentence]
    The "how" choices you made and why, one line each.
 ```
 
+A fix round or a resume rewrites the same plan file; earlier rounds stay in git
+history.
+
 Present a summary: goal, number of steps, files affected, risks, decisions.
 **Wait for approval.** On changes, update and present again. Approval of the
 plan is approval for every file it lists; a change outside that list is a stop.
 
 After approval: new build → pull the default branch and create
-`feature/[id]-[slug]` from it. Fix round → switch to the existing branch and
-pull it. Then commit the plan (and any merge record from Step 0), and set the
+`feature/[id]-[slug]` from it. Fix round → switch to the PR's head branch and
+pull it. Resume → stay on the feature branch. Then commit the plan (and any merge record from Step 0), and set the
 matrix Status to `In build`.
 
 ## Step 2 — Implement and test
