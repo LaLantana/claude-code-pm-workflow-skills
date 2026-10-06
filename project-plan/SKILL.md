@@ -54,8 +54,10 @@ With the Google Drive connector, create a folder named `[Project name]` at the
 top level of My Drive, or inside the folder the user names in the prompt. Then
 create a new Google Sheet inside that folder, named
 `[Project name] — feature matrix`, and lay it out with the Google Sheets
-connector exactly as `feature-matrix.md` describes: title row, reading guide,
-blank row, header row, then the feature rows. Headers in English; cell content in the project language. Add the two
+connector exactly as `feature-matrix.md` describes: title and version rows, the
+two-column reading guide, the header row, then the feature rows. Then apply the
+formatting in `feature-matrix.md` (title band, bold labels and header, wrapping,
+column widths) with the connector's batch update. Headers in English; cell content in the project language. Add the two
 stakeholder columns only if a stakeholder reviewer is named, and address them in
 the reading guide.
 
