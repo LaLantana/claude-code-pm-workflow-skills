@@ -49,10 +49,12 @@ using the phase names you defined in the plan.
 Acceptance criteria do not belong here. They are written per feature by `/story`.
 
 ## Step 3 — Create the feature matrix sheet
-Create a new Google Sheet with the Google Sheets connector, named
-`[Project name] — feature matrix`, laid out exactly as `feature-matrix.md`
-describes: title row, reading guide, blank row, header row, then the feature
-rows. Headers in English; cell content in the project language. Add the two
+With the Google Drive connector, create a folder named `[Project name]` at the
+top level of My Drive, or inside the folder the user names in the prompt. Then
+create a new Google Sheet inside that folder, named
+`[Project name] — feature matrix`, and lay it out with the Google Sheets
+connector exactly as `feature-matrix.md` describes: title row, reading guide,
+blank row, header row, then the feature rows. Headers in English; cell content in the project language. Add the two
 stakeholder columns only if a stakeholder reviewer is named, and address them in
 the reading guide.
 
