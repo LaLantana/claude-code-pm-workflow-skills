@@ -71,7 +71,9 @@ full matrix specification.
    cp templates/hooks/block-default-branch-commit.sh <repo>/.claude/hooks/
    ```
 
-   Adjust the test and lint commands in the allowlist to the repo's own.
+   Adjust the test and lint commands in the allowlist to the repo's own. The
+   first time you open the repo in Claude Code, accept the trust dialog;
+   until then the settings file is ignored.
 
 4. **Connect Google Sheets** in Claude Code (the Google Sheets connector), so
    `/project-plan` can create the feature matrix and `/story` and
