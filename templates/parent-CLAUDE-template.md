@@ -32,9 +32,11 @@ what calls what, where data flows, what the overall goal is.]
 
 ## Documentation conventions
 - Every repo carries its own `docs/` at its root: `docs/audit/`, `docs/plans/`,
-  `docs/reports/`, `docs/releases/`, `docs/archive/`.
+  `docs/releases/`.
 - One repo is the **shared planning home** and additionally holds
-  `docs/build-plan/` and `docs/briefs/`. For this project: **[repo-a]**.
+  `docs/project-plan.md` and `docs/stories/`. For this project: **[repo-a]**.
+- The feature matrix is one Google Sheet for the whole project, linked from the
+  project plan: [link].
 
 ## Working across repos
 - Each repo's own CLAUDE.md is canonical for its toolchain, commands, conventions,
