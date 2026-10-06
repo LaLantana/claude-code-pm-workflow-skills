@@ -30,9 +30,10 @@ find the row whose ID column matches the feature ID given. Match on ID, never on
 name.
 
 Stop and say so if: the ID is missing or ambiguous; the row's Status is anything
-other than `—` (if a story already exists, ask whether to revise it); or a
-prerequisite row listed in the plan is not yet `Shipped` and the user has not
-said to proceed anyway.
+other than `—` (if a story already exists, ask whether to revise it); the feature
+has UI and there is no `DESIGN.md` (the story cannot be approved until one
+exists, so do not draft it); or a row named in its Depends on column is not yet
+`Shipped` and the user has not said to proceed anyway.
 
 State in plain English: the feature, its area, priority and phase, its
 description from the matrix, and any plan open questions that touch it.
@@ -46,8 +47,7 @@ Tag every criterion `[AUTO]` (an automated test can verify it), `[UAT]` (a perso
 following a short checklist can verify it), or `[BOTH]`. If neither fits, the
 criterion is too vague; rewrite it.
 
-For a feature with new UI: if `DESIGN.md` exists, the Design approach line
-follows it; if it does not, add "DESIGN.md" as a blocking prerequisite and say so.
+For a feature with new UI, the Design approach line follows `DESIGN.md`.
 
 ## Step 3 — Check against the matrix
 - Priority and phase: if writing the story changed your view of either (more
@@ -56,8 +56,9 @@ follows it; if it does not, add "DESIGN.md" as a blocking prerequisite and say s
   reconfirmed.
 - Gap check: if the story needs functionality that is not in the matrix, propose
   each missing piece as a new row (Area, ID as the next number in that area,
-  Feature, Source "story [id]", Description, Impact, Effort, Priority, Phase).
-  Add them to the sheet on approval, appended at the end of their Area.
+  Feature, Source "story [id]", Description, Impact, Effort, Priority, Phase,
+  Depends on). Add them to the sheet on approval, appended at the end of their
+  Area, and add their IDs to this feature's Depends on cell.
 
 ## Step 4 — Present, approve, save
 Present a summary: the one-line "what we are building", the count of criteria by
@@ -79,7 +80,7 @@ Repos affected: [list]
 ## What this is not
    Explicit boundaries, specific.
 ## Prerequisites
-   Matrix IDs that must be shipped first, and anything else that must be in
+   The IDs from the row's Depends on column, and anything else that must be in
    place. If a prerequisite is not met, the build does not start.
 ## Acceptance criteria
    Specific, binary statements, each tagged [AUTO], [UAT] or [BOTH]. Cover the
@@ -97,11 +98,12 @@ Repos affected: [list]
 
 ## Step 5 — Update the matrix and hand off
 In the feature's row, set the Story column to the file's path from the repo root
-and the Status column to `Story approved`. Touch no other column. If you added
-rows in Step 3, their Story and Status columns are `—`.
+and the Status column to `Story approved`. Touch no other column except, if Step
+3 added dependencies, this row's Depends on. New rows have Story and Status `—`.
 
 If the sheet cannot be reached, finish anyway and list the exact cells that need
 updating so the user can do it by hand.
 
-Propose one commit for the story file and stop. The next step is
-`/build-feature [id]`.
+Do not commit the story. `/build-feature` commits it together with the plan as
+the first commit on the feature branch, so until then it is an expected
+untracked file. Stop. The next step is `/build-feature [id]`.

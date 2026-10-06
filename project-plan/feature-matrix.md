@@ -34,13 +34,14 @@ Header text is always English. Cell content is in the project language (the
 | F | Impact | `High` / `Medium` / `Low`, for the user if the feature is missing | `/project-plan` |
 | G | Effort | `High` / `Medium` / `Low`, to build it well | `/project-plan` |
 | H | Priority | `Must` / `Should` / `Could` / `Won't` | The user, via `/project-plan`. `/story` flags a change and waits; it never changes it |
-| I | Phase | A phase name from the project plan, e.g. `Phase 1` | Same as Priority |
-| J | Story | Link to `docs/stories/[id]-[slug].md` once the story is approved; `—` before | `/story` |
-| K | Status | See below | `/story`, `/build-feature` |
-| L | Stakeholder answer | `Yes` / `No` / `Ask` — optional column | The stakeholder |
-| M | Stakeholder comments | Free text — optional column | The stakeholder |
+| I | Phase | A phase name from the project plan, e.g. `Phase 1`; `—` on Won't rows | Same as Priority |
+| J | Depends on | IDs that must be `Shipped` before this one starts, comma-separated; `—` if none | `/project-plan`; `/story` may add |
+| K | Story | Path to `docs/stories/[id]-[slug].md` once the story is approved; `—` before | `/story` |
+| L | Status | See below | `/story`, `/build-feature` |
+| M | Stakeholder answer | `Yes` / `No` / `Ask` — optional column | The stakeholder |
+| N | Stakeholder comments | Free text — optional column | The stakeholder |
 
-Columns L and M exist only when the project names a stakeholder reviewer
+Columns M and N exist only when the project names a stakeholder reviewer
 (`Stakeholder reviewer:` line in CLAUDE.md or the prompt). When they exist, the
 reading guide addresses the stakeholder directly and says those two columns are
 theirs. No skill writes to them.
@@ -64,9 +65,10 @@ one cell.
 > features; ID is the stable reference, so "the 2.4" means the same thing in every
 > document. Impact is what the user loses if the feature is missing; Effort is what
 > it costs to build well. Priority is Must / Should / Could / Won't. Phase says which
-> version it belongs to: [one line per phase, from the project plan]. Story links
-> to the written-up feature once it exists, and Status tracks it from story to
-> shipped. The table is kept flat so you can sort and filter it.
+> version it belongs to: [one line per phase, from the project plan]. Depends on
+> lists the IDs that have to ship first. Story links to the written-up feature
+> once it exists, and Status tracks it from story to shipped. The table is kept
+> flat so you can sort and filter it.
 
 If the stakeholder columns exist, add:
 
@@ -79,11 +81,13 @@ If the stakeholder columns exist, add:
 ## How the skills update the sheet
 
 - Find the row by ID in column B. Never match on the feature name.
-- Write only the columns you own. Never touch another column, and never touch L or M.
-- `/story`: on approval, set J to the story's repo path and K to `Story approved`.
-  When it adds a row, fill A to I and set J and K to `—`.
-- `/build-feature`: set K to `In build` after plan approval, `In review` after the
-  PR opens, and `Shipped YYYY-MM-DD` when the session start check finds the branch
+- Write only the columns you own. Never touch another column, and never touch M or N.
+- Row lookup: read columns A to L from the header row down, find the row whose
+  column B equals the ID, and write to that row number.
+- `/story`: on approval, set K to the story's repo path and L to `Story approved`.
+  When it adds a row, fill A to J and set K and L to `—`.
+- `/build-feature`: set L to `In build` after plan approval, `In review` after the
+  PR opens, and `Shipped YYYY-MM-DD` when the session start check finds the PR
   merged.
 - If the sheet cannot be reached, say so, finish the step, and list the exact cell
   updates that are pending so the user can make them by hand.

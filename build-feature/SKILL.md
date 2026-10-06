@@ -24,9 +24,10 @@ between is yours. Follow the working rules in the repo's CLAUDE.md throughout.
 - Never read `.env`. Learn configuration from `.env.example`.
 
 ## Step 0 — Session start
-`git fetch` first. Report: the current branch, whether the default branch is behind
-the remote (offer to pull), and any uncommitted or untracked files by name, except
-those CLAUDE.md records as known.
+`git fetch` first (if the repo has no remote yet, say so and continue). Report:
+the current branch, whether the default branch is behind the remote (offer to
+pull), and any uncommitted or untracked files by name, except those CLAUDE.md
+records as known and story files under `docs/stories/` waiting for their build.
 
 Then check for shipped work: for every matrix row whose Status is `In review`,
 look up its PR (`gh pr list --state merged --search "[id]"`). If the PR has
@@ -59,7 +60,9 @@ Branch: [branch] → [default branch]
 Read the repo CLAUDE.md (and the parent CLAUDE.md if one exists), the story at
 the path in the matrix row, `docs/project-plan.md`, `docs/audit/*` if present,
 and `DESIGN.md` if the story has a Design approach line. Run the runtime
-verification from CLAUDE.md.
+verification from CLAUDE.md; if the app cannot run yet (dependencies not
+installed, nothing built), say so and continue. Installing dependencies is an
+ask permission and happens at the first plan step that needs it.
 
 Fix round (Status `In review`): find the open PR with
 `gh pr list --search "[id]"`, read its review comments with
@@ -70,8 +73,8 @@ Resume (Status `In build`): a previous session stopped before the PR. Switch to
 the feature branch, read the existing plan and the commits so far, and state
 what is done and what remains. The plan is updated, not rewritten.
 
-Stop and say so if a prerequisite ID in the story is not `Shipped`, or the story
-has a blocking open question.
+Stop and say so if an ID in the row's Depends on column is not `Shipped`, or
+the story has a blocking open question.
 
 Write `docs/plans/[id]-plan.md`:
 
@@ -104,8 +107,9 @@ plan is approval for every file it lists; a change outside that list is a stop.
 
 After approval: new build → pull the default branch and create
 `feature/[id]-[slug]` from it. Fix round → switch to the PR's head branch and
-pull it. Resume → stay on the feature branch. Then commit the plan (and any merge record from Step 0), and set the
-matrix Status to `In build`.
+pull it. Resume → stay on the feature branch. Then commit the plan, the story
+if it is not yet committed, and any merge record from Step 0, and set the matrix
+Status to `In build`.
 
 ## Step 2 — Implement and test
 For each step in the plan: write the tests for the criteria that step covers,

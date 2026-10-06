@@ -15,7 +15,7 @@ folders is untouched.
 
 ```
 /code-audit        once per existing repo        → docs/audit/[repo]-audit.md
-/project-plan      once per project              → docs/project-plan.md + the feature matrix (Google Sheet)
+/project-plan      once per project              → docs/project-plan.md (one docs PR) + the feature matrix (Google Sheet)
         │
         ▼  per feature, in build order
 /story [id]        just before building it       → docs/stories/[id]-[slug].md, matrix row → "Story approved"
@@ -39,7 +39,7 @@ and updates the open PR. The PM relays nothing.
 | Skill | When | What it produces |
 |---|---|---|
 | `code-audit` | Once per existing repo | Read-only audit: structure, stack, endpoints or pages, patterns, gaps, security observations. `docs/audit/[repo]-audit.md` |
-| `project-plan` | Once per project | A mini PRD at `docs/project-plan.md`, and the feature matrix: one Google Sheet per project, created in a Drive folder named after the project, with Area, ID, Feature, Source, Description, Impact, Effort, Priority, Phase, Story, Status, and optional stakeholder columns. The plan links to it |
+| `project-plan` | Once per project | A mini PRD at `docs/project-plan.md`, and the feature matrix: one Google Sheet per project, created in a Drive folder named after the project, with Area, ID, Feature, Source, Description, Impact, Effort, Priority, Phase, Depends on, Story, Status, and optional stakeholder columns. The plan links to it |
 | `story` | Once per feature, just before building it | A testable ticket at `docs/stories/[id]-[slug].md`: what we are building, why, what it is not, prerequisites, acceptance criteria tagged [AUTO]/[UAT]/[BOTH], technical constraints, open questions. Links itself from the matrix and may add rows the story reveals |
 | `build-feature` | Once per feature, and again for each fix round | The build loop: session start checks and merge records, execution plan, implementation with a test per criterion, an adversarial review by a subagent until GREEN or AMBER, and the PR with a UAT checklist. Bounded attempts; stops with an escalation note the PM can forward |
 

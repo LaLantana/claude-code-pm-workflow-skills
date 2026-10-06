@@ -26,6 +26,8 @@ Context: [paths to audits, a product description, research notes — optional]
 
 For a project with a stakeholder reviewer or a non-English language, set the
 `Project settings` lines in CLAUDE.md first; the skill reads them from there.
+It ends by opening a docs-only PR with the plan; merge it and pull before the
+first `/story`.
 
 ## Story (once per feature, just before building it)
 
@@ -33,7 +35,8 @@ For a project with a stakeholder reviewer or a non-English language, set the
 /story [id]
 ```
 
-`[id]` is the feature's ID in the feature matrix, for example `2.4`.
+`[id]` is the feature's ID in the feature matrix, for example `2.4`. The story
+file stays uncommitted until `/build-feature` picks it up; that is expected.
 
 ## Build feature
 

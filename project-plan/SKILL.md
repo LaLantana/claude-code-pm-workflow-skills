@@ -44,7 +44,8 @@ Write the project plan using the template in Step 5 and, in the same pass, the
 feature rows: one row per feature, grouped by Area in build order, with the
 columns from `feature-matrix.md` filled in. Assign IDs as `area.n` and never reuse
 one. Propose Priority (Must / Should / Could / Won't) and Phase for every row,
-using the phase names you defined in the plan.
+using the phase names you defined in the plan, and fill Depends on with the IDs
+that must ship first (most rows have none).
 
 Acceptance criteria do not belong here. They are written per feature by `/story`.
 
@@ -100,5 +101,8 @@ Feature matrix: [sheet link]
 ```
 
 Then add the sheet link to the `Feature matrix:` line under Project settings in
-CLAUDE.md, propose one commit for the plan and the CLAUDE.md line, and stop. The
-next step is `/story` for the first feature in build order.
+CLAUDE.md. Create a branch `docs/project-plan`, commit the plan and the CLAUDE.md
+change, push, and open a PR to the default branch (push and PR go through the
+permission prompt). This is the one docs-only PR a project needs. Tell the user
+to merge it and pull before running `/story` for the first feature in build
+order, then stop.
